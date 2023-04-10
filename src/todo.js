@@ -1,4 +1,4 @@
-export { todoList, newTodo, Todo };
+export { todoList, newTodo, Todo, displayTodoList };
 
 let todoList = [];
 
@@ -10,8 +10,6 @@ class Todo {
     this.priority = priority;
   }
 }
-const item1 = new Todo("testname", "test description", "2/2/22", 3);
-todoList.push(item1);
 
 function newTodo(name, description, dueDate, priority) {
   let newItem = new Todo(name, description, dueDate, priority);
@@ -19,4 +17,33 @@ function newTodo(name, description, dueDate, priority) {
   console.log(todoList);
 }
 
+newTodo("testname", "test description", "2/2/22", 3);
 newTodo("test2", "test 2 descript", "test 2 date?", 2);
+newTodo("test3", "description 3", "3/3/2023", 1);
+
+function displayTodoList() {
+  const element = document.createElement("div");
+  element.classList.add("todoList");
+  for (let i = 0; i < todoList.length; i++) {
+    const div0 = document.createElement("div");
+    const div = document.createElement("div");
+    const div2 = document.createElement("div");
+    const div3 = document.createElement("div");
+    const div4 = document.createElement("div");
+    div0.classList.add("todo");
+    div.textContent = todoList[i].name;
+    div.classList.add("name");
+    div2.textContent = todoList[i].description;
+    div2.classList.add("description");
+    div3.textContent = todoList[i].dueDate;
+    div3.classList.add("dueDate");
+    div4.textContent = todoList[i].priority;
+    div4.classList.add("priority");
+    element.appendChild(div0);
+    div0.appendChild(div);
+    div0.appendChild(div2);
+    div0.appendChild(div3);
+    div0.appendChild(div4);
+  }
+  return element;
+}
