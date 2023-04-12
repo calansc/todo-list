@@ -1,5 +1,5 @@
 // import { format, formatDistance } from "date-fns";
-import { todoList, Todo, newTodo, displayTodoList } from "./todo.js";
+import { todoList, newTodo, displayTodoList } from "./todo.js";
 import "./style.css";
 
 // console.log(Item);
