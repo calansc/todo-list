@@ -1,3 +1,22 @@
+:root {
+    --darkblue: #073B4c;
+    --lightblue: #118AB2;
+    --green: #06D6A0;
+    --yellow: #ffd166;
+    --red: #EF476F;
+} 
+#header {
+    display: flex;
+}
+.tabs {
+    display:flex;
+}
+.addTodo {
+    margin-left: 10px;
+}
+.addTodo, .projectTab {
+    margin-right: 10px;
+}
 .todo {
     border: red solid 2px;
 }

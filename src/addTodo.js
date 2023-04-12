@@ -122,13 +122,23 @@ function addPopup() {
   add.setAttribute("name", "submit");
   add.setAttribute("value", "Add Todo");
   add.setAttribute("alt", "Submit");
+  const close = document.createElement("input");
+  close.setAttribute("type", "reset");
+  close.setAttribute("name", "close");
+  close.setAttribute("value", "Close");
+  close.setAttribute("alt", "Close");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     addForm();
   });
+  form.addEventListener("reset", (e) => {
+    e.preventDefault();
+    closeForm("addPopup");
+  });
 
   form.appendChild(add);
+  form.appendChild(close);
   addPopup.appendChild(form);
   content.appendChild(addPopup);
   return addPopup;
@@ -147,4 +157,11 @@ function addForm() {
     content.removeChild(content.lastChild);
   }
   content.appendChild(displayTodoList());
+}
+
+function closeForm(className) {
+  const elements = document.getElementsByClassName(className);
+  while (elements.length > 0) {
+    elements[0].parentNode.removeChild(elements[0]);
+  }
 }
