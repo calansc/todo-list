@@ -1,17 +1,17 @@
 export { todoList, todoListKey, newTodo, displayTodoList };
 
 let todoList = [];
-let todoListKey = ["name", "description", "dueDate", "priority"];
+let todoListKey = ["name", "description", "dueDate", "priority", "project"];
 
-function newTodo(name, description, dueDate, priority) {
-  let newItem = [name, description, dueDate, priority];
+function newTodo(name, description, dueDate, priority, project) {
+  let newItem = [name, description, dueDate, priority, project];
   todoList.push(newItem);
   console.log(todoList);
 }
 
-newTodo("testname", "test description", "2/2/22", 3);
-newTodo("test2", "test 2 descript", "test 2 date?", 2);
-newTodo("test3", "description 3", "3/3/2023", 1);
+newTodo("testname", "test description", "2/2/22", 3, "project 1");
+newTodo("test2", "test 2 descript", "test 2 date?", 2, "project 1");
+newTodo("test3", "description 3", "3/3/2023", 1, "project 2");
 
 function displayTodoList() {
   const element = document.createElement("div");

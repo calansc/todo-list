@@ -1,19 +1,14 @@
 // import { format, formatDistance } from "date-fns";
 import { todoList, newTodo, displayTodoList } from "./todo.js";
+import { addTodo, addPopup } from "./addTodo.js";
 import "./style.css";
 
-// console.log(Item);
-// console.log(newTodo);
-// newTodo("test3", "3 de", "2/2/22", 1);
+newTodo("test4", "4 de", "2/2/22", 3);
 
+const header = document.getElementById("header");
 const content = document.getElementById("content");
 content.appendChild(displayTodoList());
+header.appendChild(addTodo());
 
-// for (let i = 0; i < todoList.length; i++) {
-//   const div = document.createElement("div");
-//   const div2 = document.createElement("div");
-//   div.textContent = todoList[i].name;
-//   content.appendChild(div);
-//   div2.textContent = todoList[i].description;
-//   content.appendChild(div2);
-// }
+const addButton = document.querySelector(".addTodo");
+addButton.addEventListener("click", addPopup, false);
