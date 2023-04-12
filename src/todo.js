@@ -19,13 +19,29 @@ function displayTodoList() {
   for (let i = 0; i < todoList.length; i++) {
     const div = document.createElement("div");
     div.classList.add("todo");
-    element.appendChild(div);
     for (let j = 0; j < todoList[i].length; j++) {
       const div1 = document.createElement("div");
       div1.classList.add(todoListKey[j]);
       div1.textContent = todoList[i][j];
       div.appendChild(div1);
     }
+    const button = document.createElement("button");
+    button.classList.add("deleteTodo");
+    button.classList.add([i]);
+    button.textContent = "Delete";
+    button.addEventListener("click", removeTodo, false);
+    div.appendChild(button);
+    element.appendChild(div);
   }
   return element;
+}
+
+function removeTodo() {
+  let todoId = this.classList[1];
+  let removed = todoList.splice(todoId, 1);
+  console.log(todoList);
+  while (content.firstChild) {
+    content.removeChild(content.lastChild);
+  }
+  content.appendChild(displayTodoList());
 }
