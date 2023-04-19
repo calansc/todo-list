@@ -2,7 +2,6 @@ export { projectList, createProject, projectTabs, addProjectPopup };
 import { displayTodoList } from "./todo.js";
 
 let projectList = ["project 1", "project 2"];
-let pList = [];
 
 function createProject() {
   const button = document.createElement("button");
@@ -112,16 +111,40 @@ function projectTabs() {
   const tab = document.createElement("div");
   tab.classList.add("projectTab");
   tab.textContent = "All Todo's";
+  tab.addEventListener("click", function () {
+    const content = document.getElementById("content");
+    while (content.firstChild) {
+      content.removeChild(content.lastChild);
+    }
+    content.appendChild(displayTodoList());
+  });
   tabs.appendChild(tab);
   for (let i = 0; i < projectList.length; i++) {
     const tab = document.createElement("div");
     tab.classList.add("projectTab");
     tab.textContent = projectList[i];
     tab.addEventListener("click", function () {
-      console.log(projectList[i]);
+      // console.log(projectList[i] + " eventlistener");
+      sortTodos(projectList[i]);
     });
     tabs.appendChild(tab);
-    // working on tab event listener to sort todos
   }
   return tabs;
+}
+
+function sortTodos(project) {
+  const content = document.getElementById("content");
+  while (content.firstChild) {
+    content.removeChild(content.lastChild);
+  }
+  content.appendChild(displayTodoList());
+  let projectName = project;
+  const projRef = document.querySelectorAll(".project");
+  // console.log(projRef.length);
+  for (let i = 0; i < projRef.length; i++) {
+    if (projRef[i].innerHTML != projectName) {
+      // console.log(projRef[i]);
+      projRef[i].parentElement.remove();
+    }
+  }
 }

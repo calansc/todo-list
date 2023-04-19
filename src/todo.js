@@ -21,12 +21,25 @@ function displayTodoList() {
       div1.textContent = todoList[i][j];
       div.appendChild(div1);
     }
+    if (todoList[i][3] === "high") {
+      div.classList.add("high");
+    } else if (todoList[i][3] === "normal") {
+      div.classList.add("normal");
+    } else if (todoList[i][3] === "low") {
+      div.classList.add("low");
+    }
     const button = document.createElement("button");
     button.classList.add("deleteTodo");
     button.classList.add([i]);
     button.textContent = "Delete";
     button.addEventListener("click", removeTodo, false);
     div.appendChild(button);
+    const complete = document.createElement("button");
+    complete.classList.add("completeTodo");
+    complete.classList.add([i]);
+    complete.textContent = "Complete";
+    complete.addEventListener("click", explode, false);
+    div.appendChild(complete);
     element.appendChild(div);
   }
   return element;
@@ -40,4 +53,18 @@ function removeTodo() {
     content.removeChild(content.lastChild);
   }
   content.appendChild(displayTodoList());
+}
+
+function explode() {
+  // alert("Boom!");
+  const thisTodo = this.parentElement;
+  thisTodo.classList.add("boom");
+  const myTimeout = setTimeout(removeThisTodo, 2000);
+  function removeThisTodo() {
+    thisTodo.remove();
+  }
+  // thisTodo.remove();
+  let todoId = this.classList[1];
+  let removed = todoList.splice(todoId, 1);
+  console.log(todoList);
 }

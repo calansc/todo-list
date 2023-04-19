@@ -20,3 +20,30 @@
 .todo {
     border: red solid 2px;
 }
+.high {
+    background-color: var(--red);
+}
+.normal {
+    background-color: var(--yellow);
+}
+.low { background-color: var(--green);}
+.boom {
+    background-image: url(./checkmark-animated.gif);
+    background-repeat:no-repeat;
+    background-position: center;
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
