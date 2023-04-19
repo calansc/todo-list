@@ -1,6 +1,7 @@
 import { sub } from "date-fns";
 import { newTodo, displayTodoList } from "./todo.js";
 import { projectList } from "./project.js";
+import { headerRefresh, contentRefresh } from "./dom.js";
 export { addTodo, addPopup };
 
 function addTodo() {
@@ -82,11 +83,12 @@ function addPopup() {
       label.setAttribute("for", todoAddKey[i]);
       label.textContent = todoAddText[i];
       const select = document.createElement("select");
+      select.setAttribute("id", todoAddKey[i]);
+      select.setAttribute("name", todoAddKey[i]);
       for (let j = 0; j < priorityList.length; j++) {
         const option = document.createElement("option");
         option.setAttribute("value", priorityList[j]);
-        option.setAttribute("id", todoAddKey[i]);
-        option.setAttribute("name", todoAddKey[i]);
+
         // option.setAttribute("selected");
         option.textContent = priorityList[j];
         select.appendChild(option);
@@ -151,11 +153,7 @@ function addForm() {
   let project = document.getElementById("project").value;
   newTodo(name, description, dueDate, priority, project);
   document.querySelector(".addPopup").style.display = "none";
-  const content = document.getElementById("content");
-  while (content.firstChild) {
-    content.removeChild(content.lastChild);
-  }
-  content.appendChild(displayTodoList());
+  contentRefresh();
 }
 
 function closeForm(className) {

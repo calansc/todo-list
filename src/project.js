@@ -1,4 +1,12 @@
-export { projectList, createProject, projectTabs, addProjectPopup };
+export {
+  projectList,
+  createProject,
+  projectTabs,
+  addProjectPopup,
+  removeProject,
+  removeProjectPopup,
+};
+import { headerRefresh, contentRefresh } from "./dom.js";
 import { displayTodoList } from "./todo.js";
 
 let projectList = ["project 1", "project 2"];
@@ -8,6 +16,13 @@ function createProject() {
   button.textContent = "Add Project";
   button.classList.add("addProject");
   const addProject = document.querySelector(".addProject");
+  return button;
+}
+function removeProject() {
+  const button = document.createElement("button");
+  button.textContent = "Remove Project";
+  button.classList.add("removeProject");
+  const removeProject = document.querySelector(".removeProject");
   return button;
 }
 
@@ -75,6 +90,67 @@ function closeForm(className) {
   }
 }
 
+function removeProjectPopup() {
+  const addPopup = document.createElement("div");
+  addPopup.classList.add("addPopup");
+  addPopup.style.display = "block";
+  addPopup.style.width = "200px";
+  addPopup.style.height = "240px";
+  addPopup.style.border = "red solid 2px";
+  addPopup.style.backgroundColor = "white";
+  addPopup.style.position = "absolute";
+  addPopup.style.top = "100px";
+  addPopup.style.left = "100px";
+  const form = document.createElement("form");
+  form.setAttribute("id", "form");
+  form.setAttribute("action", "/");
+  form.setAttribute("method", "GET");
+
+  const div = document.createElement("div");
+  div.classList.add("formDiv");
+  const label = document.createElement("label");
+  label.setAttribute("for", "removeProjectSelect");
+  label.textContent = "Which project to remove?";
+  const select = document.createElement("select");
+  select.setAttribute("name", "removeProjectSelect");
+  select.setAttribute("id", "removeProjectSelect");
+  for (let j = 0; j < projectList.length; j++) {
+    const option = document.createElement("option");
+    option.setAttribute("value", projectList[j]);
+    option.textContent = projectList[j];
+    select.appendChild(option);
+  }
+  div.appendChild(label);
+  div.appendChild(select);
+  form.appendChild(div);
+
+  const add = document.createElement("input");
+  add.setAttribute("type", "submit");
+  add.setAttribute("name", "submit");
+  add.setAttribute("value", "Add Project");
+  add.setAttribute("alt", "Submit");
+  const close = document.createElement("input");
+  close.setAttribute("type", "reset");
+  close.setAttribute("name", "close");
+  close.setAttribute("value", "Close");
+  close.setAttribute("alt", "Close");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addForm();
+  });
+  form.addEventListener("reset", (e) => {
+    e.preventDefault();
+    closeForm("addPopup");
+  });
+
+  form.appendChild(add);
+  form.appendChild(close);
+  addPopup.appendChild(form);
+  content.appendChild(addPopup);
+  return addPopup;
+}
+
 function addForm() {
   let projectName = document.getElementById("projectName").value;
   // console.log(projectList.length);
@@ -86,23 +162,10 @@ function addForm() {
       projectList.push(projectName);
     }
   }
-  // projectList.forEach()
   console.log(projectList);
   document.querySelector(".addPopup").style.display = "none";
-  const content = document.getElementById("content");
-  while (content.firstChild) {
-    content.removeChild(content.lastChild);
-  }
-  content.appendChild(displayTodoList());
-  const header = document.getElementById("header");
-  const tabs = document.querySelector(".tabs");
-  const addProjectButton = document.querySelector(".addProject");
-  header.removeChild(tabs);
-  header.removeChild(addProjectButton);
-  header.appendChild(projectTabs());
-  header.appendChild(createProject());
-  const addProject = document.querySelector(".addProject");
-  addProject.addEventListener("click", addProjectPopup, false);
+  contentRefresh();
+  headerRefresh();
 }
 
 function projectTabs() {
