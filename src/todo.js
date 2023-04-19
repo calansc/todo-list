@@ -9,10 +9,6 @@ function newTodo(name, description, dueDate, priority, project) {
   console.log(todoList);
 }
 
-newTodo("testname", "test description", "2/2/22", 3, "project 1");
-newTodo("test2", "test 2 descript", "test 2 date?", 2, "project 1");
-newTodo("test3", "description 3", "3/3/2023", 1, "project 2");
-
 function displayTodoList() {
   const element = document.createElement("div");
   element.classList.add("todoList");

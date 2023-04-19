@@ -102,12 +102,11 @@ function addPopup() {
       label.setAttribute("for", todoAddKey[i]);
       label.textContent = todoAddText[i];
       const select = document.createElement("select");
+      select.setAttribute("name", todoAddKey[i]);
+      select.setAttribute("id", todoAddKey[i]);
       for (let j = 0; j < projectList.length; j++) {
         const option = document.createElement("option");
         option.setAttribute("value", projectList[j]);
-        option.setAttribute("id", todoAddKey[i]);
-        option.setAttribute("name", todoAddKey[i]);
-        // option.setAttribute("selected");
         option.textContent = projectList[j];
         select.appendChild(option);
       }
