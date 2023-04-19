@@ -15,14 +15,12 @@ function createProject() {
   const button = document.createElement("button");
   button.textContent = "Add Project";
   button.classList.add("addProject");
-  const addProject = document.querySelector(".addProject");
   return button;
 }
 function removeProject() {
   const button = document.createElement("button");
   button.textContent = "Remove Project";
   button.classList.add("removeProject");
-  const removeProject = document.querySelector(".removeProject");
   return button;
 }
 
@@ -90,6 +88,23 @@ function closeForm(className) {
   }
 }
 
+function addForm() {
+  let projectName = document.getElementById("projectName").value;
+  // console.log(projectList.length);
+  for (let i = 0; i < projectList.length; i++) {
+    if (projectList[i] === projectName) {
+      alert("Project already exists");
+      break;
+    } else if ((i = projectList.length)) {
+      projectList.push(projectName);
+    }
+  }
+  console.log(projectList);
+  document.querySelector(".addPopup").style.display = "none";
+  contentRefresh();
+  headerRefresh();
+}
+
 function removeProjectPopup() {
   const addPopup = document.createElement("div");
   addPopup.classList.add("addPopup");
@@ -127,7 +142,7 @@ function removeProjectPopup() {
   const add = document.createElement("input");
   add.setAttribute("type", "submit");
   add.setAttribute("name", "submit");
-  add.setAttribute("value", "Add Project");
+  add.setAttribute("value", "Remove Project");
   add.setAttribute("alt", "Submit");
   const close = document.createElement("input");
   close.setAttribute("type", "reset");
@@ -137,7 +152,7 @@ function removeProjectPopup() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    addForm();
+    removeProjectForm();
   });
   form.addEventListener("reset", (e) => {
     e.preventDefault();
@@ -151,21 +166,20 @@ function removeProjectPopup() {
   return addPopup;
 }
 
-function addForm() {
-  let projectName = document.getElementById("projectName").value;
-  // console.log(projectList.length);
+function removeProjectForm() {
+  let projectName = document.getElementById("removeProjectSelect").value;
+  console.log(projectName);
+  console.log("Initial project list: " + projectList);
   for (let i = 0; i < projectList.length; i++) {
     if (projectList[i] === projectName) {
-      alert("Project already exists");
-      break;
-    } else if ((i = projectList.length)) {
-      projectList.push(projectName);
+      console.log("P-list ivalue: " + projectList[i]);
+      let removed = projectList.splice(projectList[i], 1);
     }
+    console.log("After list: " + projectList);
+    // document.querySelector(".addPopup").style.display = "none";
+    contentRefresh();
+    headerRefresh();
   }
-  console.log(projectList);
-  document.querySelector(".addPopup").style.display = "none";
-  contentRefresh();
-  headerRefresh();
 }
 
 function projectTabs() {

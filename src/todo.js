@@ -1,3 +1,5 @@
+import { contentRefresh } from "./dom";
+
 export { todoList, todoListKey, newTodo, displayTodoList };
 
 let todoList = [];
@@ -49,10 +51,7 @@ function removeTodo() {
   let todoId = this.classList[1];
   let removed = todoList.splice(todoId, 1);
   console.log(todoList);
-  while (content.firstChild) {
-    content.removeChild(content.lastChild);
-  }
-  content.appendChild(displayTodoList());
+  contentRefresh();
 }
 
 function explode() {
