@@ -221,7 +221,7 @@ function sortTodos(project) {
   for (let i = 0; i < projRef.length; i++) {
     if (projRef[i].innerHTML != projectName) {
       // console.log(projRef[i]);
-      projRef[i].parentElement.remove();
+      projRef[i].parentElement.parentElement.remove();
     }
   }
 }

@@ -1,8 +1,5 @@
-// Header tab for home list with all todo's
-// Other tabs for projects to view sets of todo's
-// tab for adding new project?
 export { headerRefresh, contentRefresh };
-import { addTodo, addPopup } from "./addTodo";
+import { addTodo, addPopup } from "./addTodo.js";
 import { displayTodoList } from "./todo";
 import {
   projectTabs,

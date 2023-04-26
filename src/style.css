@@ -19,6 +19,8 @@
 }
 .todo {
     border: red solid 2px;
+    display:grid;
+    grid-template-columns: auto auto;
 }
 .high {
     background-color: var(--red);
@@ -27,6 +29,10 @@
     background-color: var(--yellow);
 }
 .low { background-color: var(--green);}
+.todoButtons {
+    justify-self: right;
+    align-self: center;
+}
 .boom {
     background-image: url(./checkmark-animated.gif);
     background-repeat:no-repeat;
