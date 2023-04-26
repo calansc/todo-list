@@ -1,6 +1,6 @@
 export { headerRefresh, contentRefresh };
 import { addTodo, addPopup } from "./addTodo.js";
-import { displayTodoList } from "./todo";
+import { displayTodoList, todoList } from "./todo";
 import {
   projectTabs,
   createProject,

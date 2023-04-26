@@ -8,8 +8,10 @@ export {
 };
 import { headerRefresh, contentRefresh } from "./dom.js";
 import { displayTodoList } from "./todo.js";
+import { populateStorage } from "./storage.js";
 
-let projectList = ["project 1", "project 2"];
+// let projectList = ["project 1", "project 2"];
+let projectList = [];
 
 function createProject() {
   const button = document.createElement("button");
@@ -91,18 +93,23 @@ function closeForm(className) {
 function addForm() {
   let projectName = document.getElementById("projectName").value;
   // console.log(projectList.length);
-  for (let i = 0; i < projectList.length; i++) {
-    if (projectList[i] === projectName) {
-      alert("Project already exists");
-      break;
-    } else if ((i = projectList.length)) {
-      projectList.push(projectName);
+  if (projectList.length === 0) {
+    projectList.push(projectName);
+  } else if (projectList.length > 0) {
+    for (let i = 0; i < projectList.length; i++) {
+      if (projectList[i] === projectName) {
+        alert("Project already exists");
+        break;
+      } else if ((i = projectList.length)) {
+        projectList.push(projectName);
+      }
     }
   }
-  console.log(projectList);
+  // console.log(projectList);
   document.querySelector(".addPopup").style.display = "none";
   contentRefresh();
   headerRefresh();
+  populateStorage();
 }
 
 function removeProjectPopup() {
@@ -168,17 +175,18 @@ function removeProjectPopup() {
 
 function removeProjectForm() {
   let projectName = document.getElementById("removeProjectSelect").value;
-  console.log(projectName);
+  console.log("Selected " + projectName);
   console.log("Initial project list: " + projectList);
   for (let i = 0; i < projectList.length; i++) {
     if (projectList[i] === projectName) {
       console.log("P-list ivalue: " + projectList[i]);
-      let removed = projectList.splice(projectList[i], 1);
+      let removed = projectList.splice(i, 1);
     }
     console.log("After list: " + projectList);
     // document.querySelector(".addPopup").style.display = "none";
     contentRefresh();
     headerRefresh();
+    populateStorage();
   }
 }
 

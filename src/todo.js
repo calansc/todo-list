@@ -4,6 +4,7 @@ import { editTodo } from "./addTodo.js";
 import Done from "./done.svg";
 import Edit from "./edit.svg";
 import Delete from "./close.svg";
+import { populateStorage } from "./storage";
 export { todoList, todoListKey, newTodo, displayTodoList };
 
 let todoList = [];
@@ -13,7 +14,8 @@ function newTodo(name, description, dueDate, priority, project) {
   let dueDateFormat = format(new Date(dueDate), "M/d/yy");
   let newItem = [name, description, dueDateFormat, priority, project];
   todoList.push(newItem);
-  console.log(todoList);
+  // console.log(todoList);
+  populateStorage();
 }
 
 function displayTodoList() {
@@ -82,8 +84,9 @@ function displayTodoList() {
 function removeTodo() {
   let todoId = this.classList[1];
   let removed = todoList.splice(todoId, 1);
-  console.log(todoList);
+  // console.log(todoList);
   contentRefresh();
+  populateStorage();
 }
 
 function explode() {
@@ -97,14 +100,6 @@ function explode() {
   // thisTodo.remove();
   let todoId = this.classList[1];
   let removed = todoList.splice(todoId, 1);
-  console.log(todoList);
+  // console.log(todoList);
+  populateStorage();
 }
-
-// div.addEventListener(
-//   "click",
-//   function () {
-//     // console.log(todoList[i]);
-//     editTodo(todoList[i], i);
-//   },
-//   false
-// );
