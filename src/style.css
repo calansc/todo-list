@@ -4,9 +4,18 @@
     --green: #06D6A0;
     --yellow: #ffd166;
     --red: #EF476F;
+    background-color: var(--darkblue);
 } 
+* {
+    margin:0px;
+    padding:0px;
+}
 #header {
+    width: 100%;
     display: flex;
+    background-color: var(--lightblue);
+    padding: 8px;
+
 }
 .tabs {
     display:flex;
@@ -14,24 +23,60 @@
 .addTodo {
     margin-left: 10px;
 }
-.addTodo, .projectTab {
+.addTodo, .projectTab, .addProject, .removeProject {
     margin-right: 10px;
+    padding: 4px;
+    border-radius: 4px;
+}
+.projectTab:hover {
+    cursor: pointer;
+    background-color: var(--darkblue);
+}
+.selectedTab {
+    border: var(--darkblue) solid 2px;
+    /* border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0; */
+    /* border-bottom: var(--darkblue) solid 4px; */
+    font-weight: bold;
 }
 .todo {
-    border: red solid 2px;
+    /* border: red solid 2px; */
+    border-radius: 4px;
+    padding: 8px;
+    margin: 8px;
     display:grid;
     grid-template-columns: auto auto;
 }
+.name {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.dueDate {
+    font-size: 1.1rem;
+}
+.priority, .project {
+    font-size: 1rem;
+}
 .high {
-    background-color: var(--red);
+    /* background-color: var(--red); */
+    background-image: linear-gradient(to right, var(--lightblue) , var(--red));
 }
 .normal {
-    background-color: var(--yellow);
+    /* background-color: var(--yellow); */
+    background-image: linear-gradient(to right, var(--lightblue) , var(--yellow));
 }
-.low { background-color: var(--green);}
+.low { 
+    /* background-color: var(--green); */
+    background-image: linear-gradient(to right, var(--lightblue) , var(--green));
+}
 .todoButtons {
     justify-self: right;
     align-self: center;
+}
+.completeTodo:hover, .editTodo:hover, .deleteTodo:hover {
+    background-color: var(--lightblue);
+    border-radius: 4px;
+    cursor: pointer;
 }
 .boom {
     background-image: url(./checkmark-animated.gif);

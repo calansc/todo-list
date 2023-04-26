@@ -11,6 +11,7 @@ import { todoList, newTodo, displayTodoList } from "./todo.js";
 // } from "./project.js";
 import { headerRefresh, contentRefresh } from "./dom.js";
 import "./style.css";
+import { storageAvailable } from "./storage.js";
 
 newTodo("testname", "test description", "2/03/22", "high", "project 1");
 newTodo("test2", "test 2 descript", "5/15/24", "normal", "project 1");
@@ -21,3 +22,9 @@ const header = document.getElementById("header");
 const content = document.getElementById("content");
 contentRefresh();
 headerRefresh();
+
+if (storageAvailable("localStorage")) {
+  console.log("Yippee! We can use localStorage awesomeness");
+} else {
+  console.log("Too bad, no localStorage for us");
+}

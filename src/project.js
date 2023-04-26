@@ -187,13 +187,27 @@ function projectTabs() {
   tabs.classList.add("tabs");
   const tab = document.createElement("div");
   tab.classList.add("projectTab");
+  tab.classList.add("selectedTab");
   tab.textContent = "All Todo's";
+  // tab.addEventListener("click", function () {
+  //   const content = document.getElementById("content");
+  //   while (content.firstChild) {
+  //     content.removeChild(content.lastChild);
+  //   }
+  //   content.appendChild(displayTodoList());
+  // });
   tab.addEventListener("click", function () {
-    const content = document.getElementById("content");
-    while (content.firstChild) {
-      content.removeChild(content.lastChild);
+    contentRefresh();
+    for (
+      let i = 0;
+      i < document.querySelectorAll(".tabs > .projectTab").length;
+      i++
+    ) {
+      document
+        .querySelectorAll(".tabs > .projectTab")
+        [i].classList.remove("selectedTab");
     }
-    content.appendChild(displayTodoList());
+    tab.classList.add("selectedTab");
   });
   tabs.appendChild(tab);
   for (let i = 0; i < projectList.length; i++) {
@@ -203,6 +217,16 @@ function projectTabs() {
     tab.addEventListener("click", function () {
       // console.log(projectList[i] + " eventlistener");
       sortTodos(projectList[i]);
+      for (
+        let i = 0;
+        i < document.querySelectorAll(".tabs > .projectTab").length;
+        i++
+      ) {
+        document
+          .querySelectorAll(".tabs > .projectTab")
+          [i].classList.remove("selectedTab");
+      }
+      tab.classList.add("selectedTab");
     });
     tabs.appendChild(tab);
   }
@@ -210,11 +234,8 @@ function projectTabs() {
 }
 
 function sortTodos(project) {
-  const content = document.getElementById("content");
-  while (content.firstChild) {
-    content.removeChild(content.lastChild);
-  }
-  content.appendChild(displayTodoList());
+  contentRefresh();
+
   let projectName = project;
   const projRef = document.querySelectorAll(".project");
   // console.log(projRef.length);
