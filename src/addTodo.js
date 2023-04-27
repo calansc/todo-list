@@ -71,6 +71,7 @@ function addPopup() {
       input.setAttribute("id", todoAddKey[i]);
       input.setAttribute("name", todoAddKey[i]);
       input.setAttribute("type", "date");
+      input.required = true;
       //   input.setAttribute("placeholder", todoAddPlaceholder[i]);
       form.appendChild(label);
       form.appendChild(input);
