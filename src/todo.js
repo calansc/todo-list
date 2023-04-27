@@ -5,6 +5,7 @@ import Done from "./done.svg";
 import Edit from "./edit.svg";
 import Delete from "./close.svg";
 import { populateStorage } from "./storage";
+import { resetSelectedProject } from "./project";
 export { todoList, todoListKey, newTodo, displayTodoList, completedList };
 
 let todoList = [];
@@ -88,6 +89,9 @@ function removeTodo() {
   // console.log(todoList);
   contentRefresh();
   populateStorage();
+  resetSelectedProject();
+  let tabs = document.querySelector(".tabs");
+  tabs.firstChild.classList.add("selectedTab");
 }
 
 function explode() {

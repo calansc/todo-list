@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { newTodo, displayTodoList, todoList } from "./todo.js";
-import { projectList } from "./project.js";
+import { projectList, resetSelectedProject } from "./project.js";
 import { headerRefresh, contentRefresh } from "./dom.js";
 export { addTodo, addPopup, editTodo };
 
@@ -155,6 +155,9 @@ function addForm() {
   newTodo(name, description, dueDate, priority, project);
   document.querySelector(".addPopup").style.display = "none";
   contentRefresh();
+  resetSelectedProject();
+  let tabs = document.querySelector(".tabs");
+  tabs.firstChild.classList.add("selectedTab");
 }
 
 function closeForm(className) {
@@ -320,4 +323,7 @@ function editForm(todoListId) {
   todoList[todoListId][4] = project;
   document.querySelector(".addPopup").style.display = "none";
   contentRefresh();
+  resetSelectedProject();
+  let tabs = document.querySelector(".tabs");
+  tabs.firstChild.classList.add("selectedTab");
 }

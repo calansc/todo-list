@@ -5,6 +5,7 @@ export {
   addProjectPopup,
   removeProject,
   removeProjectPopup,
+  resetSelectedProject,
 };
 import { headerRefresh, contentRefresh } from "./dom.js";
 import { displayTodoList } from "./todo.js";
@@ -206,15 +207,7 @@ function projectTabs() {
   // });
   tab.addEventListener("click", function () {
     contentRefresh();
-    for (
-      let i = 0;
-      i < document.querySelectorAll(".tabs > .projectTab").length;
-      i++
-    ) {
-      document
-        .querySelectorAll(".tabs > .projectTab")
-        [i].classList.remove("selectedTab");
-    }
+    resetSelectedProject();
     tab.classList.add("selectedTab");
   });
   tabs.appendChild(tab);
@@ -225,15 +218,7 @@ function projectTabs() {
     tab.addEventListener("click", function () {
       // console.log(projectList[i] + " eventlistener");
       sortTodos(projectList[i]);
-      for (
-        let i = 0;
-        i < document.querySelectorAll(".tabs > .projectTab").length;
-        i++
-      ) {
-        document
-          .querySelectorAll(".tabs > .projectTab")
-          [i].classList.remove("selectedTab");
-      }
+      resetSelectedProject();
       tab.classList.add("selectedTab");
     });
     tabs.appendChild(tab);
@@ -252,5 +237,17 @@ function sortTodos(project) {
       // console.log(projRef[i]);
       projRef[i].parentElement.parentElement.remove();
     }
+  }
+}
+
+function resetSelectedProject() {
+  for (
+    let i = 0;
+    i < document.querySelectorAll(".tabs > .projectTab").length;
+    i++
+  ) {
+    document
+      .querySelectorAll(".tabs > .projectTab")
+      [i].classList.remove("selectedTab");
   }
 }
