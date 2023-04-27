@@ -38,36 +38,17 @@ function populateStorage() {
 function retrieveStorage() {
   let storageTodo = localStorage.getItem("todoList");
   let parseTodo = JSON.parse(storageTodo);
-  console.log(parseTodo);
+  // console.log(parseTodo);
   if (parseTodo.length > 0) {
     for (let i = 0; i < parseTodo.length; i++) {
       todoList.push(parseTodo[i]);
     }
   }
-  todoList.push(parseTodo[0]);
-
-  // const storageTodo = localStorage.getItem("todoList");
-  // if (storageTodo.length > 0) {
-  //   const todoArray = storageTodo.split(",");
-  //   for (let i = 0; i < todoArray.length; i += 5) {
-  //     let newArray = [];
-  //     newArray.push(todoArray[i]);
-  //     newArray.push(todoArray[i + 1]);
-  //     newArray.push(todoArray[i + 2]);
-  //     newArray.push(todoArray[i + 3]);
-  //     newArray.push(todoArray[i + 4]);
-  //     // console.log(newArray);
-  //     todoList.push(newArray);
-  //   }
-  // }
-  // //   console.log(todoList);
-
-  // const storageProject = localStorage.getItem("projectList");
-  // if (storageProject.length > 0) {
-  //   const projectArray = storageProject.split(",");
-  //   //   console.log(projectArray);
-  //   for (let i = 0; i < projectArray.length; i++) {
-  //     projectList.push(projectArray[i]);
-  //   }
-  // }
+  let storageProject = localStorage.getItem("projectList");
+  let parseProject = JSON.parse(storageProject);
+  if (parseProject.length > 0) {
+    for (let i = 0; i < parseProject.length; i++) {
+      projectList.push(parseProject[i]);
+    }
+  }
 }
