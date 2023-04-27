@@ -5,9 +5,10 @@ import Done from "./done.svg";
 import Edit from "./edit.svg";
 import Delete from "./close.svg";
 import { populateStorage } from "./storage";
-export { todoList, todoListKey, newTodo, displayTodoList };
+export { todoList, todoListKey, newTodo, displayTodoList, completedList };
 
 let todoList = [];
+let completedList = [];
 let todoListKey = ["name", "description", "dueDate", "priority", "project"];
 
 function newTodo(name, description, dueDate, priority, project) {
@@ -97,9 +98,11 @@ function explode() {
   function removeThisTodo() {
     thisTodo.remove();
   }
-  // thisTodo.remove();
   let todoId = this.classList[1];
   let removed = todoList.splice(todoId, 1);
+  completedList.push(removed[0]);
+  console.log(completedList);
   // console.log(todoList);
+  contentRefresh();
   populateStorage();
 }

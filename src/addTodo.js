@@ -165,7 +165,7 @@ function closeForm(className) {
 }
 
 function editTodo(thisArray, todoListId) {
-  console.log(thisArray);
+  // console.log(thisArray);
   // console.log(todoListId);
   const editPopup = document.createElement("div");
   editPopup.classList.add("addPopup");

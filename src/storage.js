@@ -1,5 +1,5 @@
 export { storageAvailable, populateStorage, retrieveStorage };
-import { todoList } from "./todo";
+import { todoList, completedList } from "./todo";
 import { projectList } from "./project";
 
 function storageAvailable(type) {
@@ -32,23 +32,32 @@ function storageAvailable(type) {
 function populateStorage() {
   let todoStringify = JSON.stringify(todoList);
   let projectStringify = JSON.stringify(projectList);
+  let completedStringify = JSON.stringify(completedList);
   localStorage.setItem("todoList", todoStringify);
   localStorage.setItem("projectList", projectStringify);
+  localStorage.setItem("completedList", completedStringify);
 }
 function retrieveStorage() {
   let storageTodo = localStorage.getItem("todoList");
   let parseTodo = JSON.parse(storageTodo);
   // console.log(parseTodo);
-  if (parseTodo.length > 0) {
+  if (parseTodo != null && parseTodo.length > 0) {
     for (let i = 0; i < parseTodo.length; i++) {
       todoList.push(parseTodo[i]);
     }
   }
   let storageProject = localStorage.getItem("projectList");
   let parseProject = JSON.parse(storageProject);
-  if (parseProject.length > 0) {
+  if (parseProject != null && parseProject.length > 0) {
     for (let i = 0; i < parseProject.length; i++) {
       projectList.push(parseProject[i]);
+    }
+  }
+  let storageCompleted = localStorage.getItem("completedList");
+  let parseCompleted = JSON.parse(storageCompleted);
+  if (parseCompleted != null && parseCompleted.length > 0) {
+    for (let i = 0; i < parseCompleted.length; i++) {
+      completedList.push(parseCompleted[i]);
     }
   }
 }
