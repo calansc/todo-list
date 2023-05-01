@@ -11,13 +11,17 @@ import {
 
 function headerRefresh() {
   const header = document.getElementById("header");
-  while (header.firstChild) {
-    header.removeChild(header.lastChild);
+  const sidebar = document.getElementById("sidebar");
+  while (sidebar.firstChild) {
+    sidebar.removeChild(sidebar.lastChild);
   }
-  header.appendChild(addTodo());
-  header.appendChild(projectTabs());
-  header.appendChild(createProject());
-  header.appendChild(removeProject());
+  // header.appendChild(addTodo());
+  sidebar.appendChild(projectTabs());
+  const projectButtons = document.createElement("div");
+  projectButtons.classList.add("projectButtons");
+  sidebar.appendChild(projectButtons);
+  projectButtons.appendChild(createProject());
+  projectButtons.appendChild(removeProject());
   const addButton = document.querySelector(".addTodo");
   addButton.addEventListener("click", addPopup, false);
   const addProject = document.querySelector(".addProject");

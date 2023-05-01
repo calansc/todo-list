@@ -2,14 +2,16 @@ import { format } from "date-fns";
 import { newTodo, displayTodoList, todoList } from "./todo.js";
 import { projectList, resetSelectedProject } from "./project.js";
 import { headerRefresh, contentRefresh } from "./dom.js";
+import Add from "./add.svg";
 export { addTodo, addPopup, editTodo };
 
 function addTodo() {
-  const button = document.createElement("button");
-  button.textContent = "Add Todo";
-  button.classList.add("addTodo");
-  const addButton = document.querySelector(".addTodo");
-  return button;
+  const add = new Image();
+  add.src = Add;
+  add.textContent = "Add Todo";
+  add.classList.add("addTodo");
+  // const addButton = document.querySelector(".addTodo");
+  return add;
 }
 
 const todoAddKey = ["name", "description", "dueDate", "priority", "project"];

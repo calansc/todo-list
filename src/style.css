@@ -12,32 +12,66 @@
 }
 #header {
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     background-color: var(--lightblue);
-    padding: 8px;
-
+    padding: 16px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    align-items: center;
 }
 .tabs {
-    display:flex;
+    display:grid;
+    margin:8px;
+    
+    /* grid-auto-flow: row; */
 }
 .addTodo {
-    margin-left: 10px;
+    width: 48px;
+    align-self: right;
+}
+.addTodo:hover {
+    background-color: var(--darkblue);
+    border-radius: 4px;
 }
 .addTodo, .projectTab, .addProject, .removeProject {
-    margin-right: 10px;
+    /* margin-right: 10px;
     padding: 4px;
-    border-radius: 4px;
+    border-radius: 4px; */
 }
 .projectTab:hover {
     cursor: pointer;
-    background-color: var(--darkblue);
+    background-color: var(--lightblue);
 }
 .selectedTab {
-    border: var(--darkblue) solid 2px;
-    /* border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0; */
-    /* border-bottom: var(--darkblue) solid 4px; */
+    /* border: var(--lightblue) solid 2px; */
+    background-color: var(--lightblue);
     font-weight: bold;
+    color:black;
+    text-align: center;
+}
+#main {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr;
+}
+#sidebar {
+    /* width: 196px; */
+    max-width: 25vw;
+}
+.projectTab {
+    background-color: var(--lightblue);
+    border-radius: 4px;
+    margin: 4px;
+    padding: 8px;
+}
+.projectButtons {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+}
+#content {
+    /* margin: 4px; */
 }
 .todo {
     /* border: red solid 2px; */
@@ -46,6 +80,7 @@
     margin: 8px;
     display:grid;
     grid-template-columns: auto auto;
+    width:;
 }
 .name {
     font-weight: bold;
@@ -73,7 +108,7 @@
     justify-self: right;
     align-self: center;
 }
-.completeTodo:hover, .editTodo:hover, .deleteTodo:hover {
+.completeTodo:hover, .editTodo:hover, .deleteTodo:hover, .addProject:hover, .removeProject:hover {
     background-color: var(--lightblue);
     border-radius: 4px;
     cursor: pointer;
@@ -97,4 +132,16 @@
         -webkit-transform: rotate(360deg); 
         transform:rotate(360deg); 
     } 
+}
+/* Mobile Style */
+@media only screen and (max-width: 450px) {
+    /* body {
+        background-color: var(--red);
+    } */
+    .todo {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        /* grid-auto-flow: column; */
+    }
 }

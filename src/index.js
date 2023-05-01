@@ -1,6 +1,6 @@
 // import { format, formatDistance } from "date-fns";
 import { todoList, newTodo, displayTodoList } from "./todo.js";
-// import { addTodo, addPopup } from "./popups.js";
+import { addTodo } from "./addTodo.js";
 // import {
 //   createProject,
 //   removeProject,
@@ -29,6 +29,7 @@ if (window.localStorage.length === 0) {
 // newTodo("test4", "4 de", "2/02/22", "high", "project 2");
 
 const header = document.getElementById("header");
+header.appendChild(addTodo());
 const content = document.getElementById("content");
 contentRefresh();
 headerRefresh();

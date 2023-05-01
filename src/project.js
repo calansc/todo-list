@@ -10,22 +10,39 @@ export {
 import { headerRefresh, contentRefresh } from "./dom.js";
 import { displayTodoList } from "./todo.js";
 import { populateStorage } from "./storage.js";
+import Add from "./add.svg";
+import Delete from "./close.svg";
 
 // let projectList = ["project 1", "project 2"];
 let projectList = [];
 
 function createProject() {
-  const button = document.createElement("button");
-  button.textContent = "Add Project";
-  button.classList.add("addProject");
-  return button;
+  const add = new Image();
+  add.src = Add;
+  add.textContent = "Add Project";
+  add.classList.add("addProject");
+  return add;
 }
 function removeProject() {
-  const button = document.createElement("button");
-  button.textContent = "Remove Project";
-  button.classList.add("removeProject");
-  return button;
+  const remove = new Image();
+  remove.src = Delete;
+  // remove.textContent = "Remove Project";
+  remove.classList.add("removeProject");
+  return remove;
 }
+
+// const edit = new Image();
+// edit.src = Edit;
+// edit.classList.add("editTodo");
+// edit.classList.add([i]);
+// // edit.textContent = "Edit";
+// edit.addEventListener(
+//   "click",
+//   function () {
+//     editTodo(todoList[i], i);
+//   },
+//   false
+// );
 
 function addProjectPopup() {
   const addPopup = document.createElement("div");
@@ -194,10 +211,11 @@ function removeProjectForm() {
 function projectTabs() {
   const tabs = document.createElement("div");
   tabs.classList.add("tabs");
+  // tabs.textContent = "My Projects";
   const tab = document.createElement("div");
   tab.classList.add("projectTab");
   tab.classList.add("selectedTab");
-  tab.textContent = "All Todo's";
+  tab.textContent = "All Projects";
   // tab.addEventListener("click", function () {
   //   const content = document.getElementById("content");
   //   while (content.firstChild) {

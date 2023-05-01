@@ -98,15 +98,15 @@ function explode() {
   // alert("Boom!");
   const thisTodo = this.parentElement.parentElement;
   thisTodo.classList.add("boom");
-  const myTimeout = setTimeout(removeThisTodo, 2000);
-  function removeThisTodo() {
-    thisTodo.remove();
-  }
   let todoId = this.classList[1];
   let removed = todoList.splice(todoId, 1);
   completedList.push(removed[0]);
   console.log(completedList);
-  // console.log(todoList);
-  contentRefresh();
-  populateStorage();
+  const myTimeout = setTimeout(removeThisTodo, 2000);
+  function removeThisTodo() {
+    thisTodo.remove();
+    // console.log(todoList);
+    contentRefresh();
+    populateStorage();
+  }
 }
