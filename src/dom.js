@@ -10,20 +10,16 @@ import {
 } from "./project";
 
 function headerRefresh() {
-  const header = document.getElementById("header");
-  const sidebar = document.getElementById("sidebar");
-  while (sidebar.firstChild) {
-    sidebar.removeChild(sidebar.lastChild);
+  const dropDownBox = document.getElementsByClassName("dropDownBox");
+  while (dropDownBox[0].firstChild) {
+    dropDownBox[0].removeChild(dropDownBox[0].lastChild);
   }
-  // header.appendChild(addTodo());
-  sidebar.appendChild(projectTabs());
+  dropDownBox[0].appendChild(projectTabs());
   const projectButtons = document.createElement("div");
   projectButtons.classList.add("projectButtons");
-  sidebar.appendChild(projectButtons);
+  dropDownBox[0].appendChild(projectButtons);
   projectButtons.appendChild(createProject());
   projectButtons.appendChild(removeProject());
-  const addButton = document.querySelector(".addTodo");
-  addButton.addEventListener("click", addPopup, false);
   const addProject = document.querySelector(".addProject");
   addProject.addEventListener("click", addProjectPopup, false);
   const removeProjectButton = document.querySelector(".removeProject");

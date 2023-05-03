@@ -11,19 +11,30 @@
     padding:0px;
 }
 #header {
-    width: 100%;
+    /* width: 100%; */
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: 1fr 64px 33vw;
     background-color: var(--lightblue);
     padding: 16px;
+    align-items: center;
+}
+.title {
     font-size: 1.4rem;
     font-weight: bold;
+}
+.dropDownDiv {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
+    justify-content: center;
 }
 .tabs {
     display:grid;
     margin:8px;
-    
+    font-weight: 100;
     /* grid-auto-flow: row; */
 }
 .addTodo {
@@ -51,13 +62,9 @@
     text-align: center;
 }
 #main {
-    display: grid;
+    /* display: grid;
     grid-auto-flow: column;
-    grid-template-columns: auto 1fr;
-}
-#sidebar {
-    /* width: 196px; */
-    max-width: 25vw;
+    grid-template-columns: auto 1fr; */
 }
 .projectTab {
     background-color: var(--lightblue);
@@ -69,7 +76,12 @@
     display: grid;
     grid-auto-flow: column;
     justify-content: center;
+    background-color: var(--lightblue);
+    border-radius: 4px;
+    margin: 12px;
+    margin-top: -4px;
 }
+
 #content {
     /* margin: 4px; */
 }
@@ -108,7 +120,7 @@
     justify-self: right;
     align-self: center;
 }
-.completeTodo:hover, .editTodo:hover, .deleteTodo:hover, .addProject:hover, .removeProject:hover {
+.completeTodo:hover, .editTodo:hover, .deleteTodo:hover{
     background-color: var(--lightblue);
     border-radius: 4px;
     cursor: pointer;
@@ -135,13 +147,17 @@
 }
 /* Mobile Style */
 @media only screen and (max-width: 450px) {
-    /* body {
-        background-color: var(--red);
-    } */
-    .todo {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr auto;
-        /* grid-auto-flow: column; */
+   .selectedTab {
+    background-color: var(--lightblue);
+   }
+}
+
+/* Desktop Style */
+@media only screen and (min-width:450px) {
+    .addProject:hover, .removeProject:hover, .projectTab:hover {
+        background-color: var(--darkblue);
+        outline: var(--lightblue) solid 2px;
+        border-radius: 4px;
     }
+    
 }
