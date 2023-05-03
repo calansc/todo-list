@@ -35,7 +35,7 @@ function dropDown() {
     false
   );
   dropDownDiv.addEventListener(
-    "touchend",
+    "touchcancel",
     function () {
       //   console.log("leave");
       dropDownBox.style.display = "none";
