@@ -11,7 +11,7 @@ function dropDown() {
   menu.src = Menu;
   dropDownDiv.appendChild(menu);
   dropDownDiv.addEventListener(
-    "mouseenter",
+    "mouseenter touchstart",
     function () {
       //   console.log("enter");
       dropDownBox.style.display = "block";
@@ -19,7 +19,7 @@ function dropDown() {
     false
   );
   dropDownDiv.addEventListener(
-    "mouseleave",
+    "mouseleave touchcancel",
     function () {
       //   console.log("leave");
       dropDownBox.style.display = "none";
