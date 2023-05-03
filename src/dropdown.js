@@ -11,7 +11,7 @@ function dropDown() {
   menu.src = Menu;
   dropDownDiv.appendChild(menu);
   dropDownDiv.addEventListener(
-    "mouseenter touchstart",
+    "mouseenter",
     function () {
       //   console.log("enter");
       dropDownBox.style.display = "block";
@@ -19,7 +19,23 @@ function dropDown() {
     false
   );
   dropDownDiv.addEventListener(
-    "mouseleave touchcancel",
+    "touchstart",
+    function () {
+      //   console.log("enter");
+      dropDownBox.style.display = "block";
+    },
+    false
+  );
+  dropDownDiv.addEventListener(
+    "mouseleave",
+    function () {
+      //   console.log("leave");
+      dropDownBox.style.display = "none";
+    },
+    false
+  );
+  dropDownDiv.addEventListener(
+    "touchend",
     function () {
       //   console.log("leave");
       dropDownBox.style.display = "none";
