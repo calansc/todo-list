@@ -30,6 +30,7 @@
     grid-auto-flow: column;
     align-items: center;
     justify-content: center;
+    text-align: right;
 }
 .tabs {
     display:grid;
@@ -92,7 +93,6 @@
     margin: 8px;
     display:grid;
     grid-template-columns: auto auto;
-    width:;
 }
 .name {
     font-weight: bold;
