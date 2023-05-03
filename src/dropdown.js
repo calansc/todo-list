@@ -21,21 +21,18 @@ function dropDown() {
   dropDownDiv.addEventListener(
     "touchstart",
     function () {
-      //   console.log("enter");
-      dropDownBox.style.display = "block";
+      let ddb = document.querySelector(".dropDownBox");
+      let ddbs = ddb.computedStyleMap().get("display");
+      if (ddbs.value === "none") {
+        dropDownBox.style.display = "block";
+      } else {
+        dropDownBox.style.display = "none";
+      }
     },
     false
   );
   dropDownDiv.addEventListener(
     "mouseleave",
-    function () {
-      //   console.log("leave");
-      dropDownBox.style.display = "none";
-    },
-    false
-  );
-  dropDownDiv.addEventListener(
-    "touchcancel",
     function () {
       //   console.log("leave");
       dropDownBox.style.display = "none";
