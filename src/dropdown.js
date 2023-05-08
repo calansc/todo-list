@@ -36,8 +36,10 @@ function dropDown() {
   dropDownDiv.addEventListener(
     "touchstart",
     (event) => {
-      const target = document.querySelector(".dropDownBox");
+      const target = document.querySelector(".dropDownDiv");
+      console.log(event.composedPath());
       const withinBoundaries = event.composedPath().includes(target);
+      console.log(withinBoundaries);
 
       if (withinBoundaries) {
         dropDownBox.style.display = "block";
