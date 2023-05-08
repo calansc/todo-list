@@ -10,47 +10,49 @@ function dropDown() {
   const menu = new Image();
   menu.src = Menu;
   dropDownDiv.appendChild(menu);
-  dropDownDiv.addEventListener(
-    "mouseenter",
-    function () {
-      //   console.log("enter");
-      dropDownBox.style.display = "block";
-    },
-    false
-  );
-  dropDownDiv.addEventListener(
-    "touchstart",
-    function () {
-      let ddb = document.querySelector(".dropDownBox");
-      let ddbs = ddb.computedStyleMap().get("display");
-      if (ddbs.value === "none") {
-        dropDownBox.style.display = "block";
-      } else {
-        dropDownBox.style.display = "none";
-      }
-    },
-    false
-  );
-  dropDownDiv.addEventListener(
-    "mouseleave",
-    function () {
-      //   console.log("leave");
-      dropDownBox.style.display = "none";
-    },
-    false
-  );
   const dropDownBox = document.createElement("div");
   dropDownBox.classList.add("dropDownBox");
   dropDownBox.style.display = "none";
   dropDownBox.style.position = "absolute";
   dropDownBox.style.right = "0px";
   dropDownBox.style.top = "46px";
-  //   dropDownBox.style.width = "100px";
-  //   dropDownBox.style.height = "100px";
   dropDownBox.style.backgroundColor = "var(--darkblue)";
   dropDownBox.style.borderRadius = "4px";
-  //   dropDownBox.appendChild(projectTabs());
   dropDownDiv.appendChild(dropDownBox);
+  dropDownDiv.addEventListener(
+    "mouseenter",
+    function () {
+      dropDownBox.style.display = "block";
+    },
+    false
+  );
+  dropDownDiv.addEventListener(
+    "mouseleave",
+    function () {
+      dropDownBox.style.display = "none";
+    },
+    false
+  );
+  dropDownDiv.addEventListener(
+    "touchstart",
+    (event) => {
+      const target = document.querySelector(".dropDownBox");
+      const withinBoundaries = event.composedPath().includes(target);
 
+      if (withinBoundaries) {
+        dropDownBox.style.display = "block";
+      } else {
+        dropDownBox.style.display = "none";
+      }
+    },
+    // function () {
+    //   let ddb = document.querySelector(".dropDownBox");
+    //   let ddbs = ddb.computedStyleMap().get("display");
+    //   if (ddbs.value === "none") {
+    //     dropDownBox.style.display = "block";
+    //   }
+    // },
+    false
+  );
   return dropDownDiv;
 }
