@@ -34,6 +34,19 @@ const content = document.getElementById("content");
 contentRefresh();
 headerRefresh();
 
+const main = document.getElementById("main");
+main.addEventListener(
+  "touchend",
+  function () {
+    let ddb = document.querySelector(".dropDownBox");
+    let ddbs = ddb.computedStyleMap().get("display");
+    if (ddbs.value === "block") {
+      dropDownBox.style.display = "none";
+    }
+  },
+  false
+);
+
 if (storageAvailable("localStorage")) {
   console.log("Yippee! We can use localStorage awesomeness");
 } else {
