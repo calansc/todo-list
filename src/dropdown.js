@@ -35,25 +35,16 @@ function dropDown() {
   );
   dropDownDiv.addEventListener(
     "touchstart",
-    (event) => {
-      const target = document.querySelector(".dropDownDiv");
-      console.log(event.composedPath());
-      const withinBoundaries = event.composedPath().includes(target);
-      console.log(withinBoundaries);
-
-      if (withinBoundaries) {
+    function (e) {
+      let ddb = document.querySelector(".dropDownBox");
+      let ddbs = ddb.computedStyleMap().get("display");
+      if (ddbs.value === "none") {
         dropDownBox.style.display = "block";
-      } else {
+      } else if (ddbs.value === "block") {
+        if (e.target !== e.currentTarget) return;
         dropDownBox.style.display = "none";
       }
     },
-    // function () {
-    //   let ddb = document.querySelector(".dropDownBox");
-    //   let ddbs = ddb.computedStyleMap().get("display");
-    //   if (ddbs.value === "none") {
-    //     dropDownBox.style.display = "block";
-    //   }
-    // },
     false
   );
   return dropDownDiv;
