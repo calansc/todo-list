@@ -25,6 +25,8 @@ function dropDown() {
       let ddbs = ddb.computedStyleMap().get("display");
       if (ddbs.value === "none") {
         dropDownBox.style.display = "block";
+      } else {
+        dropDownBox.style.display = "none";
       }
     },
     false
