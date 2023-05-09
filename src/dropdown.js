@@ -19,11 +19,13 @@ function dropDown() {
   dropDownBox.style.backgroundColor = "var(--darkblue)";
   dropDownBox.style.borderRadius = "4px";
   dropDownDiv.appendChild(dropDownBox);
+  dropDownDiv.addEventListener("click", toggleDropDown, false);
   dropDownDiv.addEventListener(
     "mouseenter",
     function (e) {
       dropDownBox.style.display = "block";
-      console.log(e.target.classList[0]);
+      dropDownBox.classList.add("active");
+      console.log(dropDownBox.classList[1]);
     },
     false
   );
@@ -31,19 +33,29 @@ function dropDown() {
     "mouseleave",
     function () {
       dropDownBox.style.display = "none";
+      dropDownBox.classList.remove("active");
     },
     false
   );
-  dropDownDiv.addEventListener(
-    "touchstart",
-    function (e) {
-      let ddb = document.querySelector(".dropDownBox");
-      let ddbs = ddb.computedStyleMap().get("display");
-      if (ddbs.value === "none") {
-        dropDownBox.style.display = "block";
-      }
-    },
-    false
-  );
+  //   dropDownDiv.addEventListener(
+  //     "touchstart",
+  //     function (e) {
+  //       let ddb = document.querySelector(".dropDownBox");
+  //       let ddbs = ddb.computedStyleMap().get("display");
+  //       if (ddbs.value === "none") {
+  //         dropDownBox.style.display = "block";
+  //       }
+  //     },
+  //     false
+  //   );
   return dropDownDiv;
+}
+function toggleDropDown() {
+  // document.querySelector(".dropDownBox").classList.toggle("active");
+  let ddb = document.querySelector(".dropDownBox");
+  if (ddb.style.display === "none") {
+    ddb.style.display = "block";
+  } else if (ddb.classList[1] != "active") {
+    ddb.style.display = "none";
+  }
 }

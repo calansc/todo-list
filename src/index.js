@@ -34,27 +34,21 @@ const content = document.getElementById("content");
 contentRefresh();
 headerRefresh();
 
-// const main = document.getElementsByTagName("body");
-document.addEventListener(
-  "touchstart",
-  function (e) {
-    let ddb = document.querySelector(".dropDownBox");
-    let ddbs = ddb.computedStyleMap().get("display");
-    if (
-      ddbs.value === "block" &&
-      (e.target.classList[0] != "dropDownDiv" ||
-        e.target.classList[0] != "dropDownBox")
-    ) {
-      ddb.style.display = "none";
-    }
-  },
-  false
-);
-
-// else if (ddbs.value === "block") {
-//   if (e.target !== e.currentTarget) return;
-//   dropDownBox.style.display = "none";
-// }
+// document.addEventListener(
+//   "touchstart",
+//   function (e) {
+//     let ddb = document.querySelector(".dropDownBox");
+//     let ddbs = ddb.computedStyleMap().get("display");
+//     if (
+//       ddbs.value === "block" &&
+//       (e.target.classList[0] != "dropDownDiv" ||
+//         e.target.classList[0] != "dropDownBox")
+//     ) {
+//       ddb.style.display = "none";
+//     }
+//   },
+//   false
+// );
 
 if (storageAvailable("localStorage")) {
   console.log("Yippee! We can use localStorage awesomeness");
