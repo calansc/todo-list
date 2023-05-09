@@ -47,11 +47,7 @@
     background-color: var(--darkblue);
     border-radius: 4px;
 }
-.addTodo, .projectTab, .addProject, .removeProject {
-    /* margin-right: 10px;
-    padding: 4px;
-    border-radius: 4px; */
-}
+
 .projectTab:hover {
     cursor: pointer;
     background-color: var(--lightblue);
