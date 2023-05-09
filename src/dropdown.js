@@ -21,8 +21,9 @@ function dropDown() {
   dropDownDiv.appendChild(dropDownBox);
   dropDownDiv.addEventListener(
     "mouseenter",
-    function () {
+    function (e) {
       dropDownBox.style.display = "block";
+      console.log(e.target.classList[0]);
     },
     false
   );
@@ -40,9 +41,6 @@ function dropDown() {
       let ddbs = ddb.computedStyleMap().get("display");
       if (ddbs.value === "none") {
         dropDownBox.style.display = "block";
-      } else if (ddbs.value === "block") {
-        if (e.target !== e.currentTarget) return;
-        dropDownBox.style.display = "none";
       }
     },
     false
