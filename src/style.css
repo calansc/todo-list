@@ -32,10 +32,6 @@
     justify-content: center;
     text-align: right;
 }
-/* .dropDownDiv:hover>.dropDownBox,
-.dropDownDiv>.active{
-    display: block;
-} */
 .tabs {
     display:grid;
     margin:8px;
