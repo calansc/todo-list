@@ -37,17 +37,6 @@ function dropDown() {
     },
     false
   );
-  //   dropDownDiv.addEventListener(
-  //     "touchstart",
-  //     function (e) {
-  //       let ddb = document.querySelector(".dropDownBox");
-  //       let ddbs = ddb.computedStyleMap().get("display");
-  //       if (ddbs.value === "none") {
-  //         dropDownBox.style.display = "block";
-  //       }
-  //     },
-  //     false
-  //   );
   return dropDownDiv;
 }
 function toggleDropDown() {
