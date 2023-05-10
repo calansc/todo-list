@@ -1,4 +1,3 @@
-import { projectTabs } from "./project";
 import Menu from "./menu.svg";
 export { dropDown };
 
@@ -19,13 +18,10 @@ function dropDown() {
   dropDownBox.style.backgroundColor = "var(--darkblue)";
   dropDownBox.style.borderRadius = "4px";
   dropDownDiv.appendChild(dropDownBox);
-  dropDownDiv.addEventListener("click", toggleDropDown, false);
   dropDownDiv.addEventListener(
     "mouseenter",
     function (e) {
       dropDownBox.style.display = "block";
-      dropDownBox.classList.add("active");
-      console.log(dropDownBox.classList[1]);
     },
     false
   );
@@ -33,18 +29,8 @@ function dropDown() {
     "mouseleave",
     function () {
       dropDownBox.style.display = "none";
-      dropDownBox.classList.remove("active");
     },
     false
   );
   return dropDownDiv;
-}
-function toggleDropDown() {
-  // document.querySelector(".dropDownBox").classList.toggle("active");
-  let ddb = document.querySelector(".dropDownBox");
-  if (ddb.style.display === "none") {
-    ddb.style.display = "block";
-  } else if (ddb.classList[1] != "active") {
-    ddb.style.display = "none";
-  }
 }

@@ -227,6 +227,13 @@ function projectTabs() {
     contentRefresh();
     resetSelectedProject();
     tab.classList.add("selectedTab");
+    let w = window.screen.width;
+    if (w < 800) {
+      console.log(w);
+      let ddb = document.querySelector(".dropDownBox");
+      ddb.style.display = "none";
+      headerRefresh();
+    }
   });
   tabs.appendChild(tab);
   for (let i = 0; i < projectList.length; i++) {
@@ -238,6 +245,13 @@ function projectTabs() {
       sortTodos(projectList[i]);
       resetSelectedProject();
       tab.classList.add("selectedTab");
+      let w = window.screen.width;
+      if (w < 800) {
+        console.log(w);
+        let ddb = document.querySelector(".dropDownBox");
+        ddb.style.display = "none";
+        headerRefresh();
+      }
     });
     tabs.appendChild(tab);
   }
